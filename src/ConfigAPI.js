@@ -10,7 +10,10 @@ class App extends Component {
     
     return (
       <div className="container">
+        
         <Home />
+        {/* <Home todayData={this.state.todayData} /> */}
+        {/* <Home parentCallback = {this.callbackFunction} finalData={finalData} /> */}
       </div>
     )
   }

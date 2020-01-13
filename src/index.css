@@ -15,6 +15,10 @@ code {
 .container {
   padding: 25px;
 }
+.wrap > div {
+  display: flex;
+  justify-content: space-evenly;
+}
 .view__heading {
   font-size: 40px;
   padding-bottom: 30px;
@@ -25,6 +29,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   max-width: min-content;
+  align-content: baseline;
   border: 1px solid;
   box-shadow: 0px 4px 9px 1px;
   padding: 15px;
@@ -41,10 +46,16 @@ code {
   padding: 5px 0;
 }
 .panel .panel__item .panel__value {
-  text-align: center;
   width: 100px;
+}
+.panel  .panel__value.panel__value--heading {
+  font-weight: 700;
+  text-align: left;
 }
 .panel .panel__item .panel__value:first-child {
   width: 200px;
   text-align: left;
+}
+.panel .panel__item .panel__value:last-child {
+  width: 150px;
 }
