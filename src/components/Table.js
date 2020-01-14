@@ -8,6 +8,7 @@ class Table extends Component {
 
     const TableBody = () => {
 
+      console.log(this.props)
       if (this.props.todayData.topSellers.length>0){
         rowsTopSellers = todayData.topSellers.map((row, index) => {
           return (
@@ -46,7 +47,7 @@ class Table extends Component {
             <div className="panel__item">
               <div className="panel__value panel__value--heading" >ΠΡΟΙΟΝ</div>
               <div className="panel__value panel__value--heading" >ID</div>
-              <div className="panel__value panel__value--heading" >ΑΠΟΘΕΜΑ</div>
+              <div className="panel__value panel__value--heading" >ΠΩΛΗΣΕΙΣ</div>
             </div>
             {rowsTopSellers}
           </div>

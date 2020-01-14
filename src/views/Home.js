@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {rest_api_creds} from './../ConfigAPI';
 import Table from "./../components/Table";
 
 class Home extends Component {
@@ -9,7 +10,9 @@ class Home extends Component {
     }
   };
 
+  
   componentDidMount() {
+    
     let today = new Date();
     const dd = String(today.getDate()).padStart(2, "0");
     const mm = String(today.getMonth() + 1).padStart(2, "0");
@@ -21,7 +24,7 @@ class Home extends Component {
       today +
       "&date_max=" +
       today +
-      "&consumer_key=ck_74731bc686c7a4c3a5a26110d7d813b8268d5b83&consumer_secret=cs_562201b3c09564fce2ad01c8b52c96d6e54b5851";
+      "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
 
     // fetch(urlTopSellers)
     //   .then(result => result.json())
@@ -38,7 +41,7 @@ class Home extends Component {
       today +
       "&date_max=" +
       today +
-      "&consumer_key=ck_74731bc686c7a4c3a5a26110d7d813b8268d5b83&consumer_secret=cs_562201b3c09564fce2ad01c8b52c96d6e54b5851";
+      "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
 
     // fetch(urlSales)
     //   .then(result => result.json())
@@ -71,6 +74,7 @@ class Home extends Component {
   }
 
   render() {
+    
     const todayData = this.state.todayData;
 
     return (
