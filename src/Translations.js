@@ -1,8 +1,8 @@
 export const translations = {
   sales : "Sales",
-  average_sales : "AVERAGE SALES",
-  total_items : "TOTAL ITEMS",
-  total_orders: "TOTAL ORDERS",
+  average_sales : "ΤΖΙΡΟΣ",
+  total_items : "ΠΡΟΙΟΝΤΑ ΠΟΥ ΠΟΥΛΗΘΗΚΑΝ",
+  total_orders: "ΑΓΟΡΕΣ",
   top_sellers: "Top Sellers",
   product: "ΠΡΟΙΟΝ",
   id: "ID",

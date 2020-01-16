@@ -48,7 +48,7 @@ class Table extends Component {
             <div className="panel__item">
               <div className="panel__value panel__value--heading" >{translations.product}</div>
               <div className="panel__value panel__value--heading" >{translations.id}</div>
-              <div className="panel__value panel__value--heading" >{translations.sells}</div>
+              <div className="panel__value panel__value--heading" >{translations.total_items}</div>
             </div>
             {rowsTopSellers}
           </div>

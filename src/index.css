@@ -45,17 +45,15 @@ code {
   display: flex;
   padding: 5px 0;
 }
-.panel .panel__item .panel__value {
-  width: 100px;
-}
+
 .panel  .panel__value.panel__value--heading {
   font-weight: 700;
   text-align: left;
 }
 .panel .panel__item .panel__value:first-child {
-  width: 200px;
   text-align: left;
 }
-.panel .panel__item .panel__value:last-child {
-  width: 150px;
+
+.panel__item > div {
+  width: 200px;
 }

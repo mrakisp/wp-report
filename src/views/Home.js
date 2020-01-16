@@ -21,19 +21,19 @@ class Home extends Component {
     const toDate = this.state.toDate
  
     const urlTopSellers =
-    rest_api_creds.website+"/wp-json/wc/v2/reports/top_sellers?date_min=" +
+    rest_api_creds.website+"/wp-json/wc/v3/reports/top_sellers?date_min=" +
     fromDate +
       "&date_max=" +
       toDate +
       "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
 
     const urlSales =
-      rest_api_creds.website+"/wp-json/wc/v2/reports/sales?date_min=" +
+      rest_api_creds.website+"/wp-json/wc/v3/reports/sales?date_min=" +
       fromDate +
       "&date_max=" +
       toDate +
       "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
-    
+
     Promise.all([
       fetch(urlTopSellers),
       fetch(urlSales)
