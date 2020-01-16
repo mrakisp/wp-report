@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {translations} from '../Translations';
 
 class Table extends Component {
   render() {
@@ -34,20 +35,20 @@ class Table extends Component {
       return (
         <div>
           <div className="panel">
-            <div className="panel__heading">Sales</div>
+            <div className="panel__heading">{translations.sales}</div>
             <div className="panel__item">
-              <div className="panel__value panel__value--heading" >AVERAGE SALES</div>
-              <div className="panel__value panel__value--heading" >TOTAL ITEMS</div>
-              <div className="panel__value panel__value--heading" >TOTAL ORDERS</div>
+              <div className="panel__value panel__value--heading" >{translations.average_sales}</div>
+              <div className="panel__value panel__value--heading" >{translations.total_items}</div>
+              <div className="panel__value panel__value--heading" >{translations.total_orders}</div>
             </div>
             {rowsSales}
           </div>
           <div className="panel">
-            <div className="panel__heading">Top Sellers</div>
+            <div className="panel__heading">{translations.top_sellers}</div>
             <div className="panel__item">
-              <div className="panel__value panel__value--heading" >ΠΡΟΙΟΝ</div>
-              <div className="panel__value panel__value--heading" >ID</div>
-              <div className="panel__value panel__value--heading" >ΠΩΛΗΣΕΙΣ</div>
+              <div className="panel__value panel__value--heading" >{translations.product}</div>
+              <div className="panel__value panel__value--heading" >{translations.id}</div>
+              <div className="panel__value panel__value--heading" >{translations.sells}</div>
             </div>
             {rowsTopSellers}
           </div>
