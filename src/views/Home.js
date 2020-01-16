@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {rest_api_creds} from '../Config';
+import {rest_api_creds, token} from '../Config';
 import {formatDate} from "../utils/Utils";
 import Table from "./../components/Table";
 import DatePicker from "./../components/Date";
@@ -17,23 +17,12 @@ class Home extends Component {
 
   //GET DATA FROM API'S
   getData = () =>{
-    const fromDate = this.state.fromDate
-    const toDate = this.state.toDate
- 
-    const urlTopSellers =
-    rest_api_creds.website+"/wp-json/wc/v3/reports/top_sellers?date_min=" +
-    fromDate +
-      "&date_max=" +
-      toDate +
-      "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
-
-    const urlSales =
-      rest_api_creds.website+"/wp-json/wc/v3/reports/sales?date_min=" +
-      fromDate +
-      "&date_max=" +
-      toDate +
-      "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
-
+    const fromDate = this.state.fromDate;
+    const toDate = this.state.toDate;
+    const endpoints = token+"date_min=" + fromDate + "&date_max=" + toDate ;
+    
+    const urlTopSellers = rest_api_creds.website+"/wp-json/wc/v3/reports/top_sellers?"+ endpoints;
+    const urlSales = rest_api_creds.website+"/wp-json/wc/v3/reports/sales?"+ endpoints;
     Promise.all([
       fetch(urlTopSellers),
       fetch(urlSales)
