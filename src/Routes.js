@@ -16,7 +16,6 @@ class Routes extends Component {
           <Route exact path='/sales' component={ Sales } />
         </Switch>
         </HashRouter>
-        {/* <Home /> */}
       </div>
     )
   }

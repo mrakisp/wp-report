@@ -1,61 +1,39 @@
 import React, { Component } from "react";
-import {rest_api_creds} from './../ConfigAPI';
+import {rest_api_creds} from '../Config';
+import {formatDate} from "../utils/Utils";
 import Table from "./../components/Table";
+import DatePicker from "./../components/Date";
 
 class Home extends Component {
+  //SET DEFAULT STATES
   state = {
     todayData: {
       topSellers : [],
       sales: []
-    }
+    },
+    fromDate : formatDate(new Date),
+    toDate : formatDate(new Date)
   };
 
-  
-  componentDidMount() {
-    
-    let today = new Date();
-    const dd = String(today.getDate()).padStart(2, "0");
-    const mm = String(today.getMonth() + 1).padStart(2, "0");
-    const yyyy = today.getFullYear();
-    today = yyyy + "-" + mm + "-" + dd;
-
+  //GET DATA FROM API'S
+  getData = () =>{
+    const fromDate = this.state.fromDate
+    const toDate = this.state.toDate
+ 
     const urlTopSellers =
-      "https://lovefashionpoint.gr/wp-json/wc/v2/reports/top_sellers?date_min=" +
-      today +
+    rest_api_creds.website+"/wp-json/wc/v2/reports/top_sellers?date_min=" +
+    fromDate +
       "&date_max=" +
-      today +
+      toDate +
       "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
-
-    // fetch(urlTopSellers)
-    //   .then(result => result.json())
-    //   .then(result => {
-    //     this.setState({
-    //       todayData: {
-    //         topSellers : result
-    //       } 
-    //     });
-    //   });
 
     const urlSales =
-      "https://lovefashionpoint.gr/wp-json/wc/v2/reports/sales?date_min=" +
-      today +
+      rest_api_creds.website+"/wp-json/wc/v2/reports/sales?date_min=" +
+      fromDate +
       "&date_max=" +
-      today +
+      toDate +
       "&consumer_key="+rest_api_creds.consumer_key+"&consumer_secret="+rest_api_creds.consumer_secret;
-
-    // fetch(urlSales)
-    //   .then(result => result.json())
-    //   .then(result => {
-    //     // this.setState( todayData.sales = result);
-    //     this.setState({
-    //       todayData: {
-    //         topSellers : todayData.topSellers,
-    //         sales : result
-    //       } 
-    //     });
-    //   });
-
-
+    
     Promise.all([
       fetch(urlTopSellers),
       fetch(urlSales)
@@ -70,16 +48,30 @@ class Home extends Component {
         } 
       });
     });
+  }
+  
+  //GET DATA FROM CHILD COMPONENT
+  callbackFunction = (from,to) => {
+    this.setState({
+        fromDate : formatDate(from),
+        toDate : formatDate(to)
+    }, () => { //CALL FUNCTION AFTER STATE IS UPDATED
+      this.getData() 
+    });
+    
+  }
 
+  componentDidMount() {
+    this.getData() 
   }
 
   render() {
     
     const todayData = this.state.todayData;
-
     return (
       <div>
         <div className="view__heading">Today Report</div>
+        <DatePicker parentCallback = {this.callbackFunction}/>
         <Table todayData={todayData} />
       </div>
     );

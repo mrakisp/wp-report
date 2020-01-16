@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
 import Routes from './Routes'
-// import Home from './views/Home'
 
 class App extends Component {
   
