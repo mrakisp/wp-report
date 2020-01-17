@@ -57,3 +57,7 @@ code {
 .panel__item > div {
   width: 200px;
 }
+
+.wrap > div {
+  flex-wrap: wrap;
+}

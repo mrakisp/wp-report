@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {rest_api_creds, token} from '../Config';
+import {topSellersEndPoint, salesEndPoint , ordersEndPoint} from '../Config';
 import {formatDate} from "../utils/Utils";
 import Table from "./../components/Table";
 import DatePicker from "./../components/Date";
@@ -7,33 +7,45 @@ import DatePicker from "./../components/Date";
 class Home extends Component {
   //SET DEFAULT STATES
   state = {
-    todayData: {
+    data: {
       topSellers : [],
-      sales: []
+      sales: [],
+      orders: []
     },
     fromDate : formatDate(new Date),
-    toDate : formatDate(new Date)
+    toDate : formatDate(new Date),
+    fromDateTime : formatDate(new Date), 
   };
 
   //GET DATA FROM API'S
   getData = () =>{
+    //DATE
     const fromDate = this.state.fromDate;
     const toDate = this.state.toDate;
-    const endpoints = token+"date_min=" + fromDate + "&date_max=" + toDate ;
-    
-    const urlTopSellers = rest_api_creds.website+"/wp-json/wc/v3/reports/top_sellers?"+ endpoints;
-    const urlSales = rest_api_creds.website+"/wp-json/wc/v3/reports/sales?"+ endpoints;
+    const endpointParams = "&date_min=" + fromDate + "&date_max=" + toDate ;
+    //DATE TIME
+    const fromDateTime = this.state.fromDateTime;
+    const toDateTime = this.state.toDateTime;
+    const endpointDateTimeParams = toDateTime ? "&after=" + fromDateTime + "T00:00:01&before=" + toDateTime + "T23:59:00&per_page=100" : "&after=" + fromDateTime + "T00:00:01&per_page=100";
+
+    const urlTopSellers = topSellersEndPoint + endpointParams;
+    const urlSales = salesEndPoint + endpointParams;
+    const urlOrders = ordersEndPoint + endpointDateTimeParams;
+
     Promise.all([
       fetch(urlTopSellers),
-      fetch(urlSales)
+      fetch(urlSales),
+      fetch(urlOrders)
     ]).then(values => Promise.all(values.map(value => value.json())))
     .then(result => {
       let topSellers = result[0];
       let sales = result[1];
+      let orders = result[2];
       this.setState({
-        todayData: {
+        data: {
           topSellers : topSellers,
-          sales : sales
+          sales : sales,
+          orders : orders
         } 
       });
     });
@@ -43,7 +55,9 @@ class Home extends Component {
   callbackFunction = (from,to) => {
     this.setState({
         fromDate : formatDate(from),
-        toDate : formatDate(to)
+        toDate : formatDate(to),
+        fromDateTime : formatDate(from), 
+        toDateTime : formatDate(to), 
     }, () => { //CALL FUNCTION AFTER STATE IS UPDATED
       this.getData() 
     });
@@ -56,12 +70,12 @@ class Home extends Component {
 
   render() {
     
-    const todayData = this.state.todayData;
+    const data = this.state.data;
     return (
       <div>
         <div className="view__heading">Today Report</div>
         <DatePicker parentCallback = {this.callbackFunction}/>
-        <Table todayData={todayData} />
+        <Table data={data} />
       </div>
     );
   }
