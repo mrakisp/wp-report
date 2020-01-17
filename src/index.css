@@ -27,12 +27,14 @@ code {
 
 .panel {
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   max-width: min-content;
   align-content: baseline;
   border: 1px solid;
   box-shadow: 0px 4px 9px 1px;
   padding: 15px;
+  margin: 15px;
 }
 .panel .panel__heading {
   width: 100%;
@@ -44,11 +46,13 @@ code {
 .panel .panel__item {
   display: flex;
   padding: 5px 0;
+  width: 100%;
 }
 
 .panel  .panel__value.panel__value--heading {
   font-weight: 700;
   text-align: left;
+  font-size: 13px;
 }
 .panel .panel__item .panel__value:first-child {
   text-align: left;
@@ -60,4 +64,63 @@ code {
 
 .wrap > div {
   flex-wrap: wrap;
+  margin: 15px;
+}
+
+.filter-criteria > div {
+  margin: 0 20px;
+}
+.filter-criteria {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  cursor: pointer;
+  border: 1px solid;
+  padding: 0 12px;
+  line-height: 25px;
+  font-size: 14px;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #191919;
+}
+.container {
+  background: #191919;
+}
+p,div {
+  color: #fff;
+}
+.DayPickerInput div {
+  color: #191919;
+}
+input {
+  text-align: center;
+  background-color: #191919;
+  color: #fff;
+  border: 1px solid;
+  padding: 6px;
+  font-weight: 600;
+}
+.panel.panel--borders .panel__item {
+  border-top: 1px solid;
+}
+.panel.panel--borders {
+  padding: 0;
+}
+.panel.panel--borders .panel__item {
+  border-top: 1px solid;
+  padding: 6px 12px;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2784313725490196);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(./images/loading.gif);
+  background-repeat: no-repeat;
+  background-position: center;
 }

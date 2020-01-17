@@ -58,7 +58,7 @@ export default class SelectDate extends React.Component {
           onDayChange={this.handleFromChange}
         />{' '}
         —{' '}
-        <span className="InputFromTo-to">
+        <div className="InputFromTo-to">
           <DayPickerInput
             ref={el => (this.to = el)}
             value={to}
@@ -74,8 +74,8 @@ export default class SelectDate extends React.Component {
             }}
             onDayChange={this.handleToChange}
           />
-        </span>
-        <div onClick={this.sendTodayDate}>Today</div>
+        </div>
+        <div className="btn" onClick={this.sendTodayDate}>Today</div>
       </div>
     );
   }

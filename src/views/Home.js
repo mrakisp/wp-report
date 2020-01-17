@@ -15,6 +15,7 @@ class Home extends Component {
     fromDate : formatDate(new Date),
     toDate : formatDate(new Date),
     fromDateTime : formatDate(new Date), 
+    loading: true
   };
 
   //GET DATA FROM API'S
@@ -46,7 +47,8 @@ class Home extends Component {
           topSellers : topSellers,
           sales : sales,
           orders : orders
-        } 
+        },
+        loading: false 
       });
     });
   }
@@ -58,6 +60,7 @@ class Home extends Component {
         toDate : formatDate(to),
         fromDateTime : formatDate(from), 
         toDateTime : formatDate(to), 
+        loading : true
     }, () => { //CALL FUNCTION AFTER STATE IS UPDATED
       this.getData() 
     });
@@ -73,7 +76,8 @@ class Home extends Component {
     const data = this.state.data;
     return (
       <div>
-        <div className="view__heading">Today Report</div>
+        { this.state.loading ? <div className="loading"></div> : null }
+        <div className="view__heading">Store Report</div>
         <DatePicker parentCallback = {this.callbackFunction}/>
         <Table data={data} />
       </div>
