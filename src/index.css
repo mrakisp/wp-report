@@ -30,7 +30,7 @@ code {
   width: 100%;
   flex-wrap: wrap;
   max-width: min-content;
-  align-content: baseline;
+  /* align-content: baseline; */
   border: 1px solid;
   box-shadow: 0px 4px 9px 1px;
   padding: 15px;
@@ -47,6 +47,7 @@ code {
   display: flex;
   padding: 5px 0;
   width: 100%;
+  max-width: fit-content;
 }
 
 .panel  .panel__value.panel__value--heading {
@@ -86,7 +87,7 @@ code {
   color: #191919;
 }
 .container {
-  background: #191919;
+  background: #32373a;
 }
 p,div {
   color: #fff;
@@ -123,4 +124,21 @@ input {
   background-image: url(./images/loading.gif);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.panel__table {
+  padding-bottom: 50px;
+}
+.wrapper {
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+}
+
+.section {
+  display: flex;
+}
+
+div#canvasjs-react-chart-container-0 {
+  margin-top: auto;
 }

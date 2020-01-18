@@ -14,7 +14,7 @@ export default class SelectDate extends React.Component {
   }
 
   showFromMonth() {
-    const { from, to } = this.state;
+    const { from } = this.state;
     if (!from) {
       return;
     }
@@ -34,7 +34,7 @@ export default class SelectDate extends React.Component {
   }
 
   sendTodayDate = () => {
-    this.props.parentCallback(new Date,new Date);
+    this.props.parentCallback(new Date(),new Date());
   }
 
 
