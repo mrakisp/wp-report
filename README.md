@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Connect woocommerce eshop (REST API) and get instant reports for top sale products & sales based on specific date or date range.
+
 ## Available Scripts
 
 In the project directory, you can run:
